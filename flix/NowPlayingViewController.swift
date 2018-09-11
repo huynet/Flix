@@ -9,22 +9,15 @@
 import UIKit
 import AlamofireImage
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
+class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    // activity indicator
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    @IBOutlet weak var movieSearchBar: UISearchBar!
     
     var movies: [[String: Any]] = []
     
     var refreshControl: UIRefreshControl!
-    
-    var moviesList: [String] = []
-    
-    var filteredData: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +52,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
                 self.movies = movies
                 self.tableView.reloadData()
                 
-                for eachMovie in movies {
-                    self.moviesList.append(eachMovie["title"] as! String)
-                }
-                
                 self.refreshControl.endRefreshing()
                 self.activityIndicator.stopAnimating()
             }
@@ -79,7 +68,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         
         let movie = movies[indexPath.row]
         let title = movie["title"] as! String
-        self.moviesList.append(title)
         let overview = movie["overview"] as! String
         
         cell.tileLabel.text = title
