@@ -27,7 +27,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
         tableView.rowHeight = 200
-
+        
         fetchMovies()
     }
     
@@ -72,7 +72,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         cell.tileLabel.text = title
         cell.overviewLabel.text = overview
-
+        
         let baseURLString = "https://image.tmdb.org/t/p/w500"
         let posterPathString = movie["poster_path"] as! String
         
@@ -81,7 +81,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
