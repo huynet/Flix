@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  SimilarViewController.swift
 //  flix
 //
 //  Created by Huy Pham on 9/12/18.
@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-enum MovieKeys {
+enum SimilarMovieKeys {
     static let title = "title"
     static let release_date = "release_date"
     static let overview = "overview"
@@ -17,8 +17,8 @@ enum MovieKeys {
     static let poster_path = "poster_path"
 }
 
-class DetailViewController: UIViewController {
-
+class SimilarViewController: UIViewController {
+    
     @IBOutlet weak var backDropImageView: UIImageView!
     
     @IBOutlet weak var posterImageView: UIImageView!
@@ -33,20 +33,21 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let movie = movie {
-            titleLabel.text = movie[MovieKeys.title] as? String
-            releaseDateLabel.text = movie[MovieKeys.release_date] as? String
-            overviewLabel.text = movie[MovieKeys.overview] as? String
+            titleLabel.text = movie[SimilarMovieKeys.title] as? String
+            releaseDateLabel.text = movie[SimilarMovieKeys.release_date] as? String
+            overviewLabel.text = movie[SimilarMovieKeys.overview] as? String
             
-            let backdropPathString = movie[MovieKeys.backdrop_path] as! String
-            let posterPathString = movie[MovieKeys.poster_path] as! String
+            let backdropPathString = movie[SimilarMovieKeys.backdrop_path] as! String
+            let posterPathString = movie[SimilarMovieKeys.poster_path] as! String
             let baseURLString = "https://image.tmdb.org/t/p/w500"
             
             let backdropURL = URL(string: baseURLString + backdropPathString)!
             backDropImageView.af_setImage(withURL: backdropURL)
             
             let posterURL = URL(string: baseURLString + posterPathString)!
+            print(posterURL)
             posterImageView.af_setImage(withURL: posterURL)
         }
     }
