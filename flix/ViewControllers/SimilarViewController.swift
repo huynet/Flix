@@ -55,7 +55,7 @@ class SimilarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var trailerViewController = segue.destination as! TrailerViewController
+        let trailerViewController = segue.destination as! TrailerViewController
         trailerViewController.movie = movie
     }
 
