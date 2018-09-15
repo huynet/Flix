@@ -1,4 +1,4 @@
-# Project 1 - *Name of App Here*
+# Project 1 - *Flix*
 
 **Flix** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
@@ -24,7 +24,8 @@ The following **stretch** user stories are implemented:
 
 The following **additional** user stories are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality! (+1-3pts)
+- [x] Create a Button to view Trailer
+- [x] Create a Tab Bar Navigation to Youtube on TrailerViewController
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -35,13 +36,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='flix.gif' title='Video Walkthrough' width="200" alt='Video Walkthrough' />
+<img src='flix.gif' title='Video Walkthrough' width="300" alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Swift is really intuitive. I love the way Swift combines .swift and the StoryBoard
 
 ## License
 
