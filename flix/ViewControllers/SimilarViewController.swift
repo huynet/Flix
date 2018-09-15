@@ -27,7 +27,7 @@ class SimilarViewController: UIViewController {
     
     @IBOutlet weak var releaseDateLabel: UILabel!
     
-    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var overviewTextView: UITextView!
     
     @IBOutlet weak var buttonLabel: UIButton!
     
@@ -39,7 +39,7 @@ class SimilarViewController: UIViewController {
         if let movie = movie {
             titleLabel.text = movie[SimilarMovieKeys.title] as? String
             releaseDateLabel.text = movie[SimilarMovieKeys.release_date] as? String
-            overviewLabel.text = movie[SimilarMovieKeys.overview] as? String
+            overviewTextView.text = movie[SimilarMovieKeys.overview] as? String
             
             let backdropPathString = movie[SimilarMovieKeys.backdrop_path] as! String
             let posterPathString = movie[SimilarMovieKeys.poster_path] as! String
