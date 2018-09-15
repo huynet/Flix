@@ -29,8 +29,8 @@ The following **additional** user stories are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Search bar with thumbnails
+2. Network fetch scope
 
 ## Video Walkthrough
 
@@ -38,15 +38,13 @@ Here's a walkthrough of implemented user stories:
 
 <img src='flix.gif' title='Video Walkthrough' width="300" alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ## Notes
 
 Swift is really intuitive. I love the way Swift combines .swift and the StoryBoard
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2018] [Huy Pham]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
