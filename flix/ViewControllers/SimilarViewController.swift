@@ -29,11 +29,13 @@ class SimilarViewController: UIViewController {
     
     @IBOutlet weak var overviewLabel: UILabel!
     
+    @IBOutlet weak var buttonLabel: UIButton!
+    
     var movie: [String: Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let movie = movie {
             titleLabel.text = movie[SimilarMovieKeys.title] as? String
             releaseDateLabel.text = movie[SimilarMovieKeys.release_date] as? String
@@ -47,9 +49,14 @@ class SimilarViewController: UIViewController {
             backDropImageView.af_setImage(withURL: backdropURL)
             
             let posterURL = URL(string: baseURLString + posterPathString)!
-            print(posterURL)
             posterImageView.af_setImage(withURL: posterURL)
+            self.movie = movie
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var trailerViewController = segue.destination as! TrailerViewController
+        trailerViewController.movie = movie
     }
 
     override func didReceiveMemoryWarning() {
