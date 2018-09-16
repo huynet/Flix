@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class NowPlayingViewController: UIViewController, UITableViewDataSource {
+class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,7 +33,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         activityIndicator.startAnimating()
-        
         fetchMovies()
     }
     
