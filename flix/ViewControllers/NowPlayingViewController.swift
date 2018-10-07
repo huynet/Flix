@@ -15,7 +15,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var movies: [[String: Any]] = []
+    var movies: [Movie] = []
     
     var refreshControl: UIRefreshControl!
     
@@ -30,34 +30,26 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        fetchMovies()
+        MovieAPIManager().fetchMovies { (movies, error) in
+            if let movies = movies {
+                self.movies = movies
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         activityIndicator.startAnimating()
-        fetchMovies()
-    }
-    
-    // Set up network to parse
-    func fetchMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let data = data {
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                let movies = dataDictionary["results"] as! [[String: Any]]
-                
+        MovieAPIManager().fetchMovies { (movies, error) in
+            if let movies = movies {
                 self.movies = movies
                 self.tableView.reloadData()
-                
-                self.refreshControl.endRefreshing()
-                self.activityIndicator.stopAnimating()
             }
         }
-        task.resume()
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+        NSLog("The webview is done loading")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,18 +59,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        let movie = movies[indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        
-        cell.tileLabel.text = title
-        cell.overviewLabel.text = overview
-        
-        let baseURLString = "https://image.tmdb.org/t/p/w500"
-        let posterPathString = movie["poster_path"] as! String
-        
-        let posterURL = URL(string: baseURLString + posterPathString)!
-        cell.posterImageView.af_setImage(withURL: posterURL)
+        cell.movie = movies[indexPath.row]
         
         return cell
     }
