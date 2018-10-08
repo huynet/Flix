@@ -1,40 +1,33 @@
-# Lab 3 - *Flix*
+# Lab 5 - *Flix*
 
 **Flix** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **16** hours spent in total
+Time spent: **4** hours spent in total
 
 ## User Stories
 
 The following **required** user stories are complete:
 
-- The following screens use AutoLayout to adapt to various orientations and screen sizes
-   - [x] Movie feed view (+3pt)
-   - [x] Detail view (+2pt)
-
-The following **stretch** user stories are implemented:
-
-   - [x] Dynamic Height Cells (+1)
-   - [x] Collection View AutoLayout (+2)
+- [x] Create a movie model (+2pt)
+- [x] Implement the movie model (+2pt)
+- [x] Implement property observers (+2pt)
+- [x] Create a basic API Client (+2pt)
 
 The following **additional** user stories are implemented:
 
-   - [x] Created a View Trailer button which links to that film trailer YouTube
+- [x] Fetch popular movies function.
+- [x] Create a switch to switch between current movies and popular movies.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Autolayout
-2. Open Browser
+1. Transition to the new model
+2. Pull to refresh
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='flix.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' />
-
-## Notes
-
-Autolayout was tricky. Gotta be meticulous.
+<img src='flix.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
 
 ## License
 

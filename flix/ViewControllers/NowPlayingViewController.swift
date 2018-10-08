@@ -62,16 +62,14 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         MovieAPIManager().fetchMovies { (movies, error) in
             if let movies = movies {
                 self.movies = movies
                 self.tableView.reloadData()
             }
         }
-        activityIndicator.stopAnimating()
-        activityIndicator.removeFromSuperview()
-        NSLog("The webview is done loading")
+        //activityIndicator.stopAnimating()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
