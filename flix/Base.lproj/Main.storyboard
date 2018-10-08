@@ -91,7 +91,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Movies" id="6SB-eU-Via"/>
+                    <navigationItem key="navigationItem" title="Movies" id="6SB-eU-Via">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="5Q2-Xj-TuV">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="O4A-B3-KQp">
+                                <rect key="frame" x="343" y="6.6666666666666679" width="51" height="31.000000000000004"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="fetchSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="OD2-eu-DH9"/>
+                                </connections>
+                            </switch>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="sT9-rf-e2d" id="10h-V8-be8"/>
                         <outlet property="tableView" destination="fmr-qf-Wvl" id="tX4-ZX-EhX"/>

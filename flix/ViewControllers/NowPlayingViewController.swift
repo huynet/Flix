@@ -19,6 +19,28 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UISearc
     
     var refreshControl: UIRefreshControl!
     
+    @IBAction func fetchSwitch(_ sender: UISwitch) {
+        if (sender.isOn) {
+            print("ON")
+            MovieAPIManager().fetchMovies { (movies, error) in
+                if let movies = movies {
+                    self.movies = movies
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        } else {
+            print("OFF")
+            MovieAPIManager().fetchPopularMovies { (movies, error) in
+                if let movies = movies {
+                    self.movies = movies
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
